@@ -3,7 +3,7 @@ import axios from 'axios'
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Row, Col, Tabs, Tab} from 'react-bootstrap'
-
+import QuickInfo from './QuickInfo';
 class App extends React.Component {
   constructor(props){
     super(props);
@@ -45,7 +45,7 @@ class App extends React.Component {
         <Container fluid>
           <Row>
             <Col md={4} className="info sticky-top">
-              
+              <QuickInfo/>
             </Col>
             <Col md={8}>
               <Tabs defaultActiveKey="data" onSelect={this.handleSelect}>
