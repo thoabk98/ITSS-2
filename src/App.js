@@ -4,6 +4,9 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Row, Col, Tabs, Tab} from 'react-bootstrap'
 import QuickInfo from './QuickInfo';
+import MyChart from './MyChart';
+import Data from './DataTable'
+import News from './News'
 class App extends React.Component {
   constructor(props){
     super(props);
@@ -51,14 +54,14 @@ class App extends React.Component {
               <Tabs defaultActiveKey="data" onSelect={this.handleSelect}>
                 <Tab eventKey="data" title="感染情報">
                   < div className="data-table">
-                  
+                  <Data data={ this.state.data } comma ={ this.numberWithCommas }/>
                   </div>
                 </Tab>
                 <Tab eventKey="chart" title="グラフ">
-                
+                  <MyChart/>
                 </Tab>
                 <Tab eventKey="news" title="ニュース">
-                 
+                  <News/>
                 </Tab>               
               </Tabs>
             </Col>
