@@ -7,6 +7,7 @@ import QuickInfo from './QuickInfo';
 import MyChart from './MyChart';
 import Data from './DataTable'
 import News from './News'
+import Wiki from './Wiki'
 class App extends React.Component {
   constructor(props){
     super(props);
@@ -62,7 +63,10 @@ class App extends React.Component {
                 </Tab>
                 <Tab eventKey="news" title="ニュース">
                   <News/>
-                </Tab>               
+                </Tab>       
+                <Tab eventKey="wiki" title="に関する情報">
+                  <Wiki/>
+                </Tab>        
               </Tabs>
             </Col>
           </Row>
