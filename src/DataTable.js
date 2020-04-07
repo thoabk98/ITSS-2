@@ -6,27 +6,27 @@ class DataTable extends Component{
   constructor(props){
     super(props);
     this.state = {
-      data: [],
-      filter:''
+      filterData:[]
      }
     this.handleChange = this.handleChange.bind(this)
   }
   componentWillReceiveProps(nextProps){
     if(nextProps.data.length > 0){
-      this.setState({data: nextProps.data})
+      this.setState({filterData: nextProps.data})
     }
   }
   handleChange(e){
-    let filter = e.target.value
-    let data = this.state.data
-    this.setState({ filter: filter })
-    if(filter) this.setState({ data: data.filter(country => country.country.indexOf(filter) !== -1) })
+    let data = this.props.data
+    data = data.filter(function(item){
+      return item.country.toLowerCase().search(
+        e.target.value.toLowerCase()) !== -1;
+    });
+    this.setState({ filterData: data })
   }
   render(){
     return(
       <div>
         <input type="search" className="form-control ds-input" id="search-input" placeholder="Search..." 
-        value={this.state.filter} 
         onChange={this.handleChange}>
         </input>
         <Table striped bordered hover variant="dark">
@@ -42,7 +42,7 @@ class DataTable extends Component{
             </tr>
           </thead>
           <tbody>
-            { this.state.data.map((country,index) => {
+            { this.state.filterData.map((country,index) => {
               return(
                 <tr key={index}>
                   <th>{ country.country }</th>
